@@ -450,18 +450,30 @@ class EPD:
         
         return buf
 
-    def display(self, image):
-        self.send_command(0x92);	
-        self.set_lut();
+    #def display(self, image):
+    #    self.send_command(0x92);
+    #    self.set_lut();
+    #    self.send_command(0x10)
+    #    for i in range(0, int(self.width * self.height / 8)):
+    #        self.send_data(0xFF)
+    #
+    #    self.send_command(0x13)
+    #    for i in range(0, int(self.width * self.height / 8)):
+    #        self.send_data(image[i])
+    #
+    #    self.send_command(0x12)
+    #    self.ReadBusy()
+
+    def display(self, imageblack, imageyellow):
         self.send_command(0x10)
         for i in range(0, int(self.width * self.height / 8)):
-            self.send_data(0xFF)
-            
+            self.send_data(imageblack[i])
+
         self.send_command(0x13)
         for i in range(0, int(self.width * self.height / 8)):
-            self.send_data(image[i])
-            
-        self.send_command(0x12) 
+            self.send_data(imageyellow[i])
+
+        self.send_command(0x12)
         self.ReadBusy()
 
     def EPD_4IN2_PartialDisplay(self, X_start, Y_start, X_end, Y_end, Image):
