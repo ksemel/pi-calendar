@@ -8,7 +8,7 @@ if os.path.exists(libdir):
     sys.path.append(libdir)
 
 import logging
-from waveshare_epd import epd4in2c
+from waveshare_epd import epd4in2
 import time
 from PIL import Image,ImageDraw,ImageFont
 import traceback
@@ -28,6 +28,7 @@ try:
     logging.info("Drawing")    
     font24 = ImageFont.truetype(os.path.join(picdir, 'Font.ttc'), 24)
     font18 = ImageFont.truetype(os.path.join(picdir, 'Font.ttc'), 18)
+    font35 = ImageFont.truetype(os.path.join(picdir, 'Font.ttc'), 35)
     
     # Drawing on the Horizontal image
     logging.info("1.Drawing on the Horizontal image...") 
